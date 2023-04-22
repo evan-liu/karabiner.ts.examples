@@ -1,8 +1,9 @@
 import { layer, map, rule, simlayer, writeToProfile } from 'karabiner-config'
 
-// Change 'Examples' to your Karabiner-Elements Profile name. Create a new profile if needed.
+// ! Change 'Examples' to your Karabiner-Elements Profile name.
+// + Create a new profile if needed.
 writeToProfile('Examples', [
-  // It is not required, not recommended to put symbols alias to layers,
+  // It is not required, but recommended to put symbols alias to layers,
   // to make it easier to write '←' instead of 'left_arrow'.
   layer('/', 'symbols').manipulators([
     map(1).toPaste('⌘'),
@@ -32,7 +33,22 @@ writeToProfile('Examples', [
 
   // In Karabiner-Elements a 'rule' is a group of manipulators.
   // layer() and simlayer() are extended rule().
-  rule('Open App').manipulators([
-    map('f', 'Meh').toApp('Finder'), // Shortcut for '$ open -a {app}.app'
+  rule('Shell command').manipulators([
+    // Use to$() to run a shell command
+    map('⎋', 'Hyper').to$('rm -rf ~/wip'),
+    // toApp() is shortcut for to$('open -a {app}.app')
+    map('f', 'Meh').toApp('Finder'),
+  ]),
+
+  // There are multiple ways of using modifiers
+  rule('Modifiers').manipulators([
+    // You can use their key_code
+    map('a', ['left_command', 'left_option']).to('b', ['fn']),
+    // Or alias (easier to write if mapped to a layer)
+    map('a', { left: '⌘⌥' }).to('b', 'fn'),
+    // Or if it can be either left or right side:
+    map('a', '⌘⌥').to('b', 'fn'),
+    // 'Hyper' is ⌘⌥⌃⇧ and 'Meh' is ⌥⌃⇧
+    map('a', 'Hyper').to('b', 'Meh'),
   ]),
 ])
