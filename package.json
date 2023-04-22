@@ -1,0 +1,7 @@
+{
+  "name": "karabiner-config-examples",
+  "description": "Examples for using karabiner.ts",
+  "license": "MIT",
+  "scripts": {
+  }
+}
