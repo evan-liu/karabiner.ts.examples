@@ -2,7 +2,9 @@
   "name": "karabiner-config-examples",
   "description": "Examples for using karabiner.ts",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "build": "ts-node src/index.ts"
+  },
   "devDependencies": {
     "karabiner-config": "^0.1.1",
     "prettier": "^2.8.7",
