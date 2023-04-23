@@ -1,11 +1,19 @@
-import { layer, map, rule, simlayer, writeToProfile } from 'karabiner-config'
+import {
+  ifApp,
+  ifVar,
+  layer,
+  map,
+  rule,
+  simlayer,
+  writeToProfile,
+} from 'karabiner-config'
 
 // ! Change 'Examples' to your Karabiner-Elements Profile name.
 // + Create a new profile if needed.
 writeToProfile('Examples', [
   // It is not required, but recommended to put symbols alias to layers,
   // to make it easier to write '←' instead of 'left_arrow'.
-  layer('/', 'symbols').manipulators([
+  layer('/', 'symbol-mode').manipulators([
     map(1).toPaste('⌘'),
     map(2).toPaste('⌥'),
     map(3).toPaste('⌃'),
@@ -27,7 +35,7 @@ writeToProfile('Examples', [
   ]),
 
   // If you type fast, use simlayer instead, see https://github.com/yqrashawn/GokuRakuJoudo/blob/master/tutorial.md#simlayers
-  simlayer('z', 'emoji').manipulators([
+  simlayer('z', 'emoji-mode').manipulators([
     map('m').toPaste('🔀'), // Merge branches
   ]),
 
@@ -48,7 +56,20 @@ writeToProfile('Examples', [
     map('a', { left: '⌘⌥' }).to('b', 'fn'),
     // Or if it can be either left or right side:
     map('a', '⌘⌥').to('b', 'fn'),
+
     // 'Hyper' is ⌘⌥⌃⇧ and 'Meh' is ⌥⌃⇧
     map('a', 'Hyper').to('b', 'Meh'),
+
+    // Add optional modifiers after the mandatory modifiers. About optional modifiers:
+    // https://karabiner-elements.pqrs.org/docs/json/complex-modifications-manipulator-definition/from/modifiers/#frommodifiersoptional
+    map('a', '⌘', 'any').to('b'), // ⌘⇧a -> ⇧b
+  ]),
+
+  // Rules can have conditions which will be added to all manipulators.
+  rule('Conditions', ifApp('^com.apple.finder$')).manipulators([
+    // manipulators can also have multiple conditions
+    // layer/simlayer are behind a 'variable_if' condition.
+    // use unless() to switch {condition}_if to {condition}_unless
+    map(0).to(1).condition(ifVar('vi-mode'), ifVar('stop').unless()),
   ]),
 ])
