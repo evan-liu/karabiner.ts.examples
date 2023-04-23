@@ -11,8 +11,9 @@ import {
 // ! Change 'Examples' to your Karabiner-Elements Profile name.
 // + Create a new profile if needed.
 writeToProfile('Examples', [
-  // It is not required, but recommended to put symbols alias to layers,
+  // It is not required, but recommended to put symbol alias to layers,
   // to make it easier to write '←' instead of 'left_arrow'.
+  // Supported alias: https://github.com/evan-liu/karabiner.ts/blob/main/src/utils/key-alias.ts
   layer('/', 'symbol-mode').manipulators([
     map(1).toPaste('⌘'),
     map(2).toPaste('⌥'),
@@ -71,5 +72,16 @@ writeToProfile('Examples', [
     // layer/simlayer are behind a 'variable_if' condition.
     // use unless() to switch {condition}_if to {condition}_unless
     map(0).to(1).condition(ifVar('vi-mode'), ifVar('stop').unless()),
+  ]),
+
+  // Optional parameters can be set when use
+  // - from.simultaneous  - basic.simultaneous_threshold_milliseconds
+  // - to_if_alone        - basic.to_if_alone_timeout_milliseconds
+  // - to_if_held_down    - basic.to_if_held_down_threshold_milliseconds
+  // - to_delayed_action  - basic.to_delayed_action_delay_milliseconds
+  rule('Parameters').manipulators([
+    map('left_option')
+      .toIfAlone('r', '⌘')
+      .parameters({ 'basic.to_if_alone_timeout_milliseconds': 500 }),
   ]),
 ])
