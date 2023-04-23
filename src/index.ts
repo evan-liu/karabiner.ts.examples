@@ -15,24 +15,23 @@ writeToProfile('Examples', [
   // to make it easier to write '←' instead of 'left_arrow'.
   // Supported alias: https://github.com/evan-liu/karabiner.ts/blob/main/src/utils/key-alias.ts
   layer('/', 'symbol-mode').manipulators([
-    map(1).toPaste('⌘'),
-    map(2).toPaste('⌥'),
-    map(3).toPaste('⌃'),
-    map(4).toPaste('⇧'),
-    map(5).toPaste('⇪'),
+    map(1).toPaste('⌘'), // command
+    map(2).toPaste('⌥'), // option
+    map(3).toPaste('⌃'), // control
+    map(4).toPaste('⇧'), // shift
+    map(5).toPaste('⇪'), // caps_lock
 
-    map('←').toPaste('←'),
-    map('→').toPaste('→'),
-    map('↑').toPaste('↑'),
-    map('↓').toPaste('↓'),
-    map('␣').toPaste('␣'),
-    map('⏎').toPaste('⏎'),
-    map('⇥').toPaste('⇥'),
-    map('⎋').toPaste('⎋'),
-    map('⌫').toPaste('⌫'),
-    map('⌦').toPaste('⌦'),
-    map('-').toPaste('⎽'),
-    map('⇪').toPaste('⇪'),
+    map('←').toPaste('←'), // left_arrow
+    map('→').toPaste('→'), // right_arrow
+    map('↑').toPaste('↑'), // up_arrow
+    map('↓').toPaste('↓'), // down_arrow
+    map('␣').toPaste('␣'), // spacebar
+    map('⏎').toPaste('⏎'), // return_or_enter
+    map('⇥').toPaste('⇥'), // tab
+    map('⎋').toPaste('⎋'), // escape
+    map('⌫').toPaste('⌫'), // delete_or_backspace
+    map('⌦').toPaste('⌦'), // delete_forward
+    map('⇪').toPaste('⇪'), // caps_lock
   ]),
 
   // If you type fast, use simlayer instead, see https://github.com/yqrashawn/GokuRakuJoudo/blob/master/tutorial.md#simlayers
@@ -83,5 +82,13 @@ writeToProfile('Examples', [
     map('left_option')
       .toIfAlone('r', '⌘')
       .parameters({ 'basic.to_if_alone_timeout_milliseconds': 500 }),
+  ]),
+
+  // There are some other useful abstractions over the json config.
+  // [File an issue](https://github.com/evan-liu/karabiner.ts/issues) to suggest more.
+  rule('Other abstractions').manipulators([
+    // Move the mouse cursor to a position and (optionally) to a screen.
+    map('↑', 'Meh').toMouseCursorPosition({ x: '100%', y: 0 }),
+    map('→', 'Meh').toMouseCursorPosition({ x: '50%', y: '50%', screen: 1 }),
   ]),
 ])

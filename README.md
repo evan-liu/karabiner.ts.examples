@@ -1,6 +1,6 @@
 # Examples of using karabiner.ts
 
-To get started with [karabiner.ts](https://github.com/evan-liu/karabiner.ts): 
+This is the examples/starter repo to get started with [karabiner.ts](https://github.com/evan-liu/karabiner.ts): 
 
 1. [Download](https://github.com/evan-liu/karabiner-config-examples/archive/refs/heads/main.zip) (or clone | [fork](https://github.com/evan-liu/karabiner-config-examples/fork)) this repo.
 2. Run `npm install`.
