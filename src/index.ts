@@ -58,6 +58,8 @@ writeToProfile('Examples', [
     map('a', '⌘⌥').to('b', 'fn'),
 
     // 'Hyper' is ⌘⌥⌃⇧ and 'Meh' is ⌥⌃⇧
+    map('right_command').toHyper(),
+    map('⇪').toMeh().toIfAlone('⇪'),
     map('a', 'Hyper').to('b', 'Meh'),
 
     // Add optional modifiers after the mandatory modifiers. About optional modifiers:
