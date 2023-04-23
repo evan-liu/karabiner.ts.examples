@@ -58,6 +58,8 @@ writeToProfile('Examples', [
     map('a', '⌘⌥').to('b', 'fn'),
 
     // 'Hyper' is ⌘⌥⌃⇧ and 'Meh' is ⌥⌃⇧
+    // ⚠️ Note: Modifier alias (command|option|control|shift and ⌘⌥⌃⇧)
+    //          can only be used as modifiers, but not as key_code
     map('right_command').toHyper(),
     map('⇪').toMeh().toIfAlone('⇪'),
     map('a', 'Hyper').to('b', 'Meh'),
