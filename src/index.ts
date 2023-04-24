@@ -5,6 +5,7 @@ import {
   map,
   rule,
   simlayer,
+  withCondition,
   writeToProfile,
 } from 'karabiner-config'
 
@@ -94,5 +95,16 @@ writeToProfile('Examples', [
     // Move the mouse cursor to a position and (optionally) to a screen.
     map('↑', 'Meh').toMouseCursorPosition({ x: '100%', y: 0 }),
     map('→', 'Meh').toMouseCursorPosition({ x: '50%', y: '50%', screen: 1 }),
+  ]),
+
+  // There are also some useful utilities
+  rule('Utility').manipulators([
+    // For nested conditions inside rules/layers
+    map(0).to(1).condition(ifVar('a')),
+    // You can group them using withCondition()
+    ...withCondition(ifVar('a'))([
+      map(0).to(1),
+      map(1).to(2).condition(ifApp('X').unless()), // And nest more conditions.
+    ]),
   ]),
 ])
