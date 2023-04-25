@@ -4,10 +4,10 @@
   "license": "MIT",
   "scripts": {
     "build": "ts-node src/index.ts",
-    "update": "npm update karabiner-config"
+    "update": "npm update karabiner-dot-ts"
   },
   "devDependencies": {
-    "karabiner-config": "latest",
+    "karabiner-dot-ts": "latest",
     "prettier": "^2.8.7",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4"

@@ -7,7 +7,7 @@ import {
   simlayer,
   withCondition,
   writeToProfile,
-} from 'karabiner-config'
+} from 'karabiner-dot-ts'
 
 // ! Change 'Examples' to your Karabiner-Elements Profile name.
 // + Create a new profile if needed.
