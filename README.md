@@ -8,7 +8,7 @@ This is the examples/starter repo to get started with [karabiner.ts](https://git
 
 ## Usage as Starter
 
-1. [Download](https://github.com/evan-liu/karabiner-config-examples/archive/refs/heads/main.zip) (or clone | [fork](https://github.com/evan-liu/karabiner-config-examples/fork)) this repo.
+1. [Download](https://github.com/evan-liu/karabiner.ts.examples/archive/refs/heads/main.zip) (or clone | [fork](https://github.com/evan-liu/karabiner.ts.examples/fork)) this repo.
 2. Run `npm install`.
 3. Update to your own [configs](./src/index.ts). 
 4. Set the profile name. Create a new Karabiner-Elements profile if needed.
