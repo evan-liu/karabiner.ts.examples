@@ -20,8 +20,8 @@ writeToProfile('--dry-run', [
   // to make it easier to write '←' instead of 'left_arrow'.
   // Supported alias: https://github.com/evan-liu/karabiner.ts/blob/main/src/utils/key-alias.ts
   layer('/', 'symbol-mode').manipulators([
+    //     / + [ 1    2    3    4    5 ] =>
     withMapper(['⌘', '⌥', '⌃', '⇧', '⇪'])((k, i) =>
-      //         1    2    3    4    5
       map((i + 1) as NumberKeyValue).toPaste(k),
     ),
     withMapper(['←', '→', '↑', '↓', '␣', '⏎', '⇥', '⎋', '⌫', '⌦', '⇪'])((k) =>
