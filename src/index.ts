@@ -3,9 +3,12 @@ import {
   ifVar,
   layer,
   map,
+  mapDoubleTap,
+  NumberKeyValue,
   rule,
   simlayer,
   withCondition,
+  withMapper,
   writeToProfile,
 } from 'karabiner.ts'
 
@@ -17,23 +20,13 @@ writeToProfile('--dry-run', [
   // to make it easier to write '←' instead of 'left_arrow'.
   // Supported alias: https://github.com/evan-liu/karabiner.ts/blob/main/src/utils/key-alias.ts
   layer('/', 'symbol-mode').manipulators([
-    map(1).toPaste('⌘'), // command
-    map(2).toPaste('⌥'), // option
-    map(3).toPaste('⌃'), // control
-    map(4).toPaste('⇧'), // shift
-    map(5).toPaste('⇪'), // caps_lock
-
-    map('←').toPaste('←'), // left_arrow
-    map('→').toPaste('→'), // right_arrow
-    map('↑').toPaste('↑'), // up_arrow
-    map('↓').toPaste('↓'), // down_arrow
-    map('␣').toPaste('␣'), // spacebar
-    map('⏎').toPaste('⏎'), // return_or_enter
-    map('⇥').toPaste('⇥'), // tab
-    map('⎋').toPaste('⎋'), // escape
-    map('⌫').toPaste('⌫'), // delete_or_backspace
-    map('⌦').toPaste('⌦'), // delete_forward
-    map('⇪').toPaste('⇪'), // caps_lock
+    withMapper(['⌘', '⌥', '⌃', '⇧', '⇪'])((k, i) =>
+      //         1    2    3    4    5
+      map((i + 1) as NumberKeyValue).toPaste(k),
+    ),
+    withMapper(['←', '→', '↑', '↓', '␣', '⏎', '⇥', '⎋', '⌫', '⌦', '⇪'])((k) =>
+      map(k).toPaste(k),
+    ),
   ]),
 
   // If you type fast, use simlayer instead, see https://github.com/yqrashawn/GokuRakuJoudo/blob/master/tutorial.md#simlayers
@@ -103,9 +96,17 @@ writeToProfile('--dry-run', [
     // For nested conditions inside rules/layers
     map(0).to(1).condition(ifVar('a')),
     // You can group them using withCondition()
-    ...withCondition(ifVar('a'))([
+    withCondition(ifVar('a'))([
       map(0).to(1),
       map(1).to(2).condition(ifApp('X').unless()), // And nest more conditions.
     ]),
+
+    // Use withMapper() to apply the same mapping
+    withMapper({ c: 'Calendar', f: 'Finder' })((k, v) =>
+      map(k, 'Meh').toApp(v),
+    ),
+
+    // And some others like double-tap
+    mapDoubleTap(1).to('w', '⌘'),
   ]),
 ])
