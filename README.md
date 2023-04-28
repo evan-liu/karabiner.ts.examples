@@ -8,6 +8,8 @@ This is the examples/starter repo to get started with [karabiner.ts](https://git
 
 ## Usage as Starter
 
+(Install [Node.js](https://nodejs.org/en) first if not already installed)
+
 1. [Download](https://github.com/evan-liu/karabiner.ts.examples/archive/refs/heads/main.zip) (or clone | [fork](https://github.com/evan-liu/karabiner.ts.examples/fork)) this repo.
 2. Run `npm install`.
 3. Update to your own [configs](./src/index.ts). 
