@@ -123,7 +123,9 @@ of writeToProfile('profileName', [ rules ], { params }). The default values are:
 'mouse_motion_to_scroll.speed': 100,
 
 // karabiner.ts only parameters
-// for mapDoubleTap()
+//   for simlayer()
+'simlayer.threshold_milliseconds': 200
+//   for mapDoubleTap()
 'double_tap.delay_milliseconds': 200,
 
  */
