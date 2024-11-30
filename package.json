@@ -3,7 +3,7 @@
   "description": "Examples for using karabiner.ts",
   "license": "MIT",
   "scripts": {
-    "build": "tsx karabiner-config.ts",
+    "build": "tsx src/index.ts",
     "update": "npm update karabiner.ts"
   },
   "devDependencies": {
